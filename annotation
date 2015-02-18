@@ -52,7 +52,7 @@ def annotation():
                 new_name = u'a' + str(count) + u'.txt'
                 #вот здесь что-то не то: путь создается, папка тоже, но разметка не записывается
                 route = 'C:\\Users\\diplodok\\Desktop\\Fipl\\Paper\\mystem.exe -cn ' + os.path.join(root, fname) + u' ' + u'C:\\Users\\diplodok\\Desktop\\Fipl\\Paper\\mystem\\' + new_name
-                print route
+                #print route
                 os.system(route)
                 count += 1
 
