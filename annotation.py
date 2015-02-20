@@ -3,7 +3,7 @@ import os
 import codecs
 
 def files_create(fname, x, z):
-    f = codecs.open(fname, 'r', 'utf-8-sig')
+    f = codecs.open(fname, 'r', 'utf-8')
     n = 0
     l = 1
     arr = []
@@ -11,7 +11,7 @@ def files_create(fname, x, z):
         if line.startswith(u'<h2'):
             n += 1
             final = n + x
-            name_dirs = u'Part ' + str(final)
+            name_dirs = u'Part_' + str(final)
             if not os.path.exists(name_dirs):
                 os.makedirs(name_dirs)
             arr.append(line)
@@ -23,7 +23,7 @@ def files_create(fname, x, z):
             else:
                 name = str(l + z) + u'.txt'
                 dirs = u'./' + name_dirs
-                s = codecs.open(os.path.join(dirs, name), 'a', 'utf-8-sig')
+                s = codecs.open(os.path.join(dirs, name), 'a', 'utf-8')
                 for element in arr:
                     s.write(element)
                 s.close()
@@ -33,7 +33,7 @@ def files_create(fname, x, z):
         else:
             arr.append(line)
     new_name = str(l + z) + u'.txt'
-    m = codecs.open(os.path.join(dirs, new_name), 'a', 'utf-8-sig')
+    m = codecs.open(os.path.join(dirs, new_name), 'a', 'utf-8')
     for element in arr:
         m.write(element)
     m.close()
@@ -46,13 +46,13 @@ def annotation():
     count = 1
     if not os.path.exists(u'mystem'):
         os.makedirs(u'mystem')
+    app = os.path.join(u'.', u'mystem.exe')
     for root, dirs, files in os.walk(u'.'):
         for fname in files:
             if fname.endswith(u'.txt'):
-                new_name = u'a' + str(count) + u'.txt'
-                #вот здесь что-то не то: путь создается, папка тоже, но разметка не записывается
-                route = 'C:\\Users\\diplodok\\Desktop\\Fipl\\Paper\\mystem.exe -cn ' + os.path.join(root, fname) + u' ' + u'C:\\Users\\diplodok\\Desktop\\Fipl\\Paper\\mystem\\' + new_name
-                #print route
+                new_name = u'mystem\\' + u'a' + str(count) + u'.txt'
+                route = app + u' -cn ' + os.path.join(root, fname) + u' ' + os.path.join(root, new_name)
+                print route
                 os.system(route)
                 count += 1
 
